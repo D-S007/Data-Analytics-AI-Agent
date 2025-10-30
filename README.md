@@ -73,24 +73,25 @@ Built with Python, FastAPI, Streamlit, and PostgreSQL, this agent serves as an e
 ```
 
 Data-Analytics-AI-Agent/
-├──app.py          #streamlit app
-├──modules
-├── init.py
-├── ai_services.py
-├── data_cleaning.py
-├── data_ingestion.py
-├── database_manager.py
-├── profiling.py
-└── visualization.py
-├──requirements.txt      #Project dependencies
-└──utils
-├── init.py
-└── helpers.py
-└──README.md
+├── app.py          #streamlit app
+├── modules
+    ├── __init__.py
+    ├── ai_services.py
+    ├── data_cleaning.py
+    ├── data_ingestion.py
+    ├── database_manager.py
+    ├── profiling.py
+    └── visualization.py
+├── requirements.txt      #Project dependencies
+└── utils
+    ├── __init__.py
+    └── helpers.py
+└── README.md            
 ├── .devcontainer
-└── devcontainer.json
-├──.gitignore
-├──LICENSE
+    └── devcontainer.json
+├── .gitignore
+├── LICENSE
+
 
 ```
 
