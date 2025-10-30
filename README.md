@@ -1,4 +1,3 @@
-```markdown
 # 🧠 Data Analytics AI Agent
 
 > An AI-powered data analytics assistant that automates the entire data lifecycle — from ingestion to transformation, querying, visualization, and reporting.
@@ -131,4 +130,3 @@ Data-Analytics-AI-Agent/
 
 MIT License © 2025 David S.  
 Feel free to fork, contribute, or enhance this project.
-```
