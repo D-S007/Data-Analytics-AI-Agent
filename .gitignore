@@ -104,3 +104,4 @@ data/
 *.env
 .env.*
 secrets.json
+Data-Analytics-AI-Agent.code-workspace
