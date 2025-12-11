@@ -12,7 +12,7 @@ from utils.helpers import format_bytes, validate_file_size
 
 # Page configuration
 st.set_page_config(
-    page_title="Data Analytics AI Agent",
+    page_title="CleanFlow : Version Controlled Big-Data Cleaner",
     page_icon="🤖",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -444,8 +444,8 @@ def handle_profiling():
                 
                 # Display report in iframe
                 st.subheader("Report Preview")
-                st.components.v1.html(report_html, height=800, scrolling=True)
-                
+                st.html(report_html)
+
             except Exception as e:
                 st.error(f"❌ Report generation failed: {str(e)}")
 
