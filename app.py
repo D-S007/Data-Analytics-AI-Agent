@@ -9,6 +9,8 @@ from modules.ai_services import AIServices
 from modules.visualization import Visualization
 from modules.profiling import DataProfiler
 from utils.helpers import format_bytes, validate_file_size
+from modules.version_control import VersionControl
+
 
 # Page configuration
 st.set_page_config(
@@ -29,9 +31,12 @@ if 'ai_services' not in st.session_state:
     st.session_state.ai_services = AIServices()
 if 'current_step' not in st.session_state:
     st.session_state.current_step = 1
+if 'version_control' not in st.session_state:
+    st.session_state.version_control = VersionControl()
+
 
 def main():
-    st.title("🤖 Data Analytics AI Agent")
+    st.title("🤖 CleanFlow : Version Controlled Big-Data Analyzer")
     st.markdown("Upload your dataset, clean it automatically, and get AI-powered insights!")
     
     # Sidebar for navigation
@@ -273,6 +278,32 @@ def handle_data_cleaning():
             file_name="cleaned_data.csv",
             mime="text/csv"
         )
+    st.success("✅ Data cleaned successfully!")
+
+    # Save version
+    commit_message = st.text_input("Commit message for this version:", "Auto-cleaning performed")
+
+    if st.button("💾 Save Version Snapshot"):
+        vid = st.session_state.version_control.save_version(
+            st.session_state.cleaned_data,
+            message=commit_message
+        )
+        st.success(f"📌 Version saved successfully! Version ID: {vid}")
+
+        st.subheader("📜 Version History")
+
+        versions = st.session_state.version_control.list_versions()
+        if versions:
+            for v in versions:
+                with st.expander(f"Version {v['version_id']}"):
+                    st.json(v)
+                    
+                    if st.button(f"🔄 Load Version {v['version_id']}", key=v['version_id']):
+                        st.session_state.cleaned_data = st.session_state.version_control.load_version(v['version_id'])
+                        st.success(f"Loaded version {v['version_id']} successfully!")
+        else:
+            st.info("No versions saved yet.")
+
 
 def handle_storage_and_queries():
     st.header("💾 Storage & Queries")
