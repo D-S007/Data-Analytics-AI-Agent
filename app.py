@@ -278,7 +278,6 @@ def handle_data_cleaning():
             file_name="cleaned_data.csv",
             mime="text/csv"
         )
-    st.success("✅ Data cleaned successfully!")
 
     # Save version
     commit_message = st.text_input("Commit message for this version:", "Auto-cleaning performed")
